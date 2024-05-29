@@ -4,7 +4,8 @@
   "description": "email_engine_core",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon src/index.ts --watch"
   },
   "keywords": [],
   "author": "",
@@ -13,9 +14,16 @@
     "@elastic/elasticsearch": "^8.13.1",
     "axios": "^1.7.2",
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "elasticsearch": "^16.7.3",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.4.0",
     "passport": "^0.7.0",
-    "passport-oauth2": "^1.8.0"
+    "passport-oauth2": "^1.8.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
   }
 }

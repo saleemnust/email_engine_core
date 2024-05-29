@@ -1,0 +1,23 @@
+<!-- src/views/data.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Data</title>
+    <script>
+        const eventSource = new EventSource('/events');
+        eventSource.onmessage = function(event) {
+            const email = JSON.parse(event.data);
+            const listItem = document.createElement('li');
+            listItem.textContent = `Subject: ${email.subject}, From: ${email.from.emailAddress.address}`;
+            document.getElementById('emailList').appendChild(listItem);
+        };
+    </script>
+</head>
+<body>
+<h1>Email Data</h1>
+<ul id="emailList"></ul>
+</body>
+</html>
