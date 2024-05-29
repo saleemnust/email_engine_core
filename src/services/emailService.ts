@@ -12,12 +12,13 @@ export const fetchEmails = async (accessToken: string) => {
     });
 
     const emails = response.data.value;
+    const bulkBody = [];
 
     for (const email of emails) {
-        await client.index({
-            index: elasticsearchConfig.indexEmail,
-            id: email.id,
-            body: email
-        });
+        bulkBody.push({ index: { _index: elasticsearchConfig.indexEmail, _id: email.id } });
+        bulkBody.push(email);
     }
+
+    await client.bulk({ body: bulkBody });
+
 };
